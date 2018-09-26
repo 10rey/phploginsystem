@@ -13,23 +13,23 @@ if (isset($_POST['submit'])) {
 	// Error handlers and validation
 	// Check if inputs are empty
 	if (empty($uid) || empty($pwd)) {
-		header("Location: ../signup.php?login=empty");
+		header("Location: ../index.php?login=empty");
 			exit();
 	}else{
 		// Check if user exist in the database
-		$sql = "SELECT * FROM users WHERE user_id='$uid' OR user_email='$uid' ";
+		$sql = "SELECT * FROM users WHERE user_email='$uid' OR user_uid='$uid' ";
 		$result = mysqli_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
 
 		if ($resultCheck < 1) {
-			header("Location: ../signup.php?login=error");
+			header("Location: ../index.php?login=error");
 			exit();
 		}else{
 			if ($row = mysqli_fetch_assoc($result)) {
 				// De-hashing the password
 				$hashedPwdCheck = password_verify($pwd, $row['user_pwd']);
 				if(!$hashedPwdCheck){
-					header("Location: ../signup.php?login=error");
+					header("Location: ../index.php?login=error");
 					exit();
 				}elseif ($hashedPwdCheck) {
 					// Log in the user here 

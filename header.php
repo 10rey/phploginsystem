@@ -25,14 +25,14 @@
 						if (isset($_SESSION['u_uid'])) {
 
 							echo '<form action="includes/logout.inc.php" method="post">
-							 	<button type="submit" name="submit">Logout</button>
+							 	<button type="submit" name="submit" >Logout</button>
 							 </form>';
 						}else{
 
 							echo '<form action="includes/login.inc.php" method="post">
-								<input type="text" name="uid" placeholder="Username/email">
-								<input type="password" name="pwd" placeholder="password">
-								<button type="submit" name="submit">Login</button>
+								<input type="text" name="uid" placeholder="Username/email" required>
+								<input type="password" name="pwd" placeholder="password" required>
+								<button type="submit" name="submit" >Login</button>
 							</form>
 							
 							<a href="signup.php">Sign up</a>';
